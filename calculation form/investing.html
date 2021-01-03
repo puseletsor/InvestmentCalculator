@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<meta name="veiwport" content="width=device-width, initial-scale=1.8"/>
+ <meat http-equiv="X-UA-Compitable" content="ie=edge"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/all.css"/>
+    <link rel="stylesheet" href="try.css"/>
+        <link rel="stylesheet" href="try.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+
+
+
+
+    
+var date=new Date();
+var i = 0; // interest
+var m = 0; // months
+var f = 0; // factor
+var den = 0;
+var s = "0"; // string
+var d = 0; // decimal place
+function CalcA() {
+   
+if(document.calform.interest.value=="" || document.calform.months.value=="" || document.calform.payment.value=="") {
+alert("Please fill in all of the required fields.");
+}
+else {
+if(document.calform.period.options[1].selected == true) {
+m = document.calform.months.value * 5;
+    
+}
+
+else {
+m = document.calform.months.value;
+}
+
+    i = Math.pow(((document.calform.interest.value/100)+2),0.000001);
+den = i / (i);
+f = Math.pow((i+1),m);
+f /= den;
+f *= document.calform.payment.value;
+d = String(f).indexOf(".");
+s = String(f).substring(0,(d+3));
+document.calform.total.value = "" + s;
+   }
+      var date=new Date();
+    var n=date.toLocaleDateString();
+           date.setDate(date.getDate()+30);
+         
+ document.getElementById("orderdate").value=n;
+}
+
+</script>
+</head>
+
+<body>
+ <section  id="nav-bar">
+ <nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand"  href="#"><img  src="#" ></a>
+     <h5 class="text" ><b></b></h5>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.php">DASHBOARD</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="investing.php">PAYMENTS</a>
+        <li class="nav-item">
+        <a class="nav-link" href="deduct">DEDUCTION</a>
+         <li class="nav-item">
+        <a class="nav-link" href="contact.php">CONTACT</a>
+      </li>
+    </ul>
+  </div>
+</nav>   
+</section>   
+    
+  
+  <h5></h5>  
+<span></span>
+<section class="box" id="box">
+    <div class="container" id="container">
+	<div class="form-container sign-up-container">
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <label for="pop">POP</label>
+    <input type="file" name="file" class="form-control-file" id="pop" required>
+    <button type="submit" name="submit">UPLOAD</button>
+    </form>
+  </div>
+  
+ <div class="form-container sign-in-container">   
+  <form action="includes/invest.inc.php" method="post" name="calform">
+<h5>Enter Invested Amount</h5>
+   <table width=300 >
+ <tr>
+<td align=right width=50 height=50>Date</td>
+<td><input type=date name=date size=13 maxlength=13 required></td>
+</tr>   
+<tr>
+<td align=right width=200>Total invested each month:</td>
+<td><input type=text name=payment size=13 maxlength=13 required></td>
+</tr>
+<tr>
+<td align=right width=200>Number of months:</td>
+<td><input type=text name=months size=3 maxlength=3 required>
+<select name=period size=1 required>
+<option value="m">Months
+<option value="">
+</select>
+</td>
+</tr>
+<tr>
+<td align=right width=200>Interest rate on savings:</td>
+<td><input type=text name=interest value="100" size=5 maxlength=5 readonly><b> %</b></td>
+</tr>
+<tr>
+    
+<td width=200 colspan=2 align=center> <br>
+<input type=button name=button1 value="submit" onClick="CalcA('date','orderdate','total')"></a></td>
+</tr>
+<tr>
+<td colspan=2 align=center width=100>Total :
+<input type=text name=total value="0.00" size=15 maxlength=15 required></td>
+</tr>
+</table>
+</form>
+    </div>
+    	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>First Step</h1>
+				<p>Make sure you enter correct amount and month/s to avoid your investement to be unsucceful </p>
+				<button class="ghost" id="signIn">Invest</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Second Step</h1>
+				<p>Upload Proof of Payment</p>
+				<button class="ghost" id="signUp">POP</button>
+			</div>
+		</div>
+	</div>
+</div>
+    </section>
+     <script  src="try.js"></script>
+ </body>
+</html>
